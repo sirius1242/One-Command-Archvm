@@ -33,17 +33,16 @@ echo -e '[archlinuxcn]\nServer = https://mirrors.ustc.edu.cn/archlinuxcn/\$arch'
 pacman -Syy
 pacman -S archlinuxcn-keyring --noconfirm
 pacman -S sudo git vim zsh grub pkgfile oh-my-zsh-git zsh-syntax-highlighting openssh --noconfirm
-[[ $vbox == 'yes' ]] && pacman -S virtualbox-guest-modules-arch virtualbox-guest-utils-nox --noconfirm
 systemctl enable sshd
 systemctl enable dhcpcd
 grub-install --target=i386-pc --boot-directory=/boot --bootloader-id=grub /dev/sda
 grub-mkconfig -o /boot/grub/grub.cfg
 useradd -m -G wheel -s /usr/bin/zsh $user
+[[ $vbox == 'yes' ]] && pacman -S virtualbox-guest-modules-arch virtualbox-guest-utils-nox --noconfirm && modprobe vboxsf && usermod -a -G vboxsf $user && systemctl enable vboxservice.service
 echo "$passwd
 $passwd" | passwd $user
 echo '$user ALL=(ALL) ALL' | EDITOR='tee -a' visudo
 echo '$user ALL=(ALL) NOPASSWD: ALL' | EDITOR='tee -a' visudo
-mkdir /home/$user/.ssh
 chsh -s /usr/bin/zsh
 EOF
 cp zshrc /mnt/home/$user/.zshrc

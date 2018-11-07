@@ -71,7 +71,7 @@ set scrolloff=7                 " keep 3 lines when scrolling
 " show
 set ruler                       " show the current row and column
 set number                      " show line numbers
-set nowrap
+" set nowrap
 set showcmd                     " display incomplete commands
 set showmode                    " display current modes
 set showmatch                   " jump to matches when entering parentheses
@@ -194,10 +194,10 @@ endfun
 
 " ============================ key map ============================
 
-nnoremap k gk
-nnoremap gk k
-nnoremap j gj
-nnoremap gj j
+" nnoremap k gk
+" nnoremap gk k
+" nnoremap j gj
+" nnoremap gj j
 
 map <C-j> <C-W>j
 map <C-k> <C-W>k
