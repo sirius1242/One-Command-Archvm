@@ -5,6 +5,7 @@ user='vm'
 passwd='archlinux'
 mname='Archlinux-vm'
 tz='/Asia/Shanghai'
+vbox='yes'
 
 # script begin
 timedatectl set-ntp true
@@ -32,7 +33,7 @@ echo -e '[archlinuxcn]\nServer = https://mirrors.ustc.edu.cn/archlinuxcn/\$arch'
 pacman -Syy
 pacman -S archlinuxcn-keyring --noconfirm
 pacman -S sudo git vim zsh grub pkgfile oh-my-zsh-git zsh-syntax-highlighting openssh --noconfirm
-pacman -S virtualbox-guest-modules-arch virtualbox-guest-utils-nox --noconfirm
+[[ $vbox == 'yes' ]] && pacman -S virtualbox-guest-modules-arch virtualbox-guest-utils-nox --noconfirm
 systemctl enable sshd
 systemctl enable dhcpcd
 grub-install --target=i386-pc --boot-directory=/boot --bootloader-id=grub /dev/sda
