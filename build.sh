@@ -6,6 +6,8 @@ passwd='archlinux'
 mname='Archlinux-vm'
 tz='/Asia/Shanghai'
 vbox='yes'
+# packages which will install automatically in this script
+pkglist=(sudo git gcc vim zsh grub pkgfile oh-my-zsh-git zsh-syntax-highlighting openssh)
 
 # script begin
 timedatectl set-ntp true
@@ -32,7 +34,7 @@ echo -e "127.0.0.1\tlocalhost\n::1\t\tlocalhost\n127.0.1.1\t$mname" >> /etc/host
 echo -e '[archlinuxcn]\nServer = https://mirrors.ustc.edu.cn/archlinuxcn/\$arch' >> /etc/pacman.conf
 pacman -Syy
 pacman -S archlinuxcn-keyring --noconfirm
-pacman -S sudo git vim zsh grub pkgfile oh-my-zsh-git zsh-syntax-highlighting openssh --noconfirm
+pacman -S $pkglist --noconfirm
 systemctl enable sshd
 systemctl enable dhcpcd
 grub-install --target=i386-pc --boot-directory=/boot --bootloader-id=grub /dev/sda
