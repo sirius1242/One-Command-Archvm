@@ -7,7 +7,7 @@ mname='Archlinux-vm'
 tz='/Asia/Shanghai'
 vbox='yes'
 # packages which will install automatically in this script
-pkglist=(sudo git gcc vim zsh grub pkgfile oh-my-zsh-git zsh-syntax-highlighting openssh)
+pkglist="sudo git gcc vim zsh grub pkgfile oh-my-zsh-git zsh-syntax-highlighting openssh"
 
 # script begin
 timedatectl set-ntp true
