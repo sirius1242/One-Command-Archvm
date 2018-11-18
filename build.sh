@@ -37,6 +37,7 @@ pacman -S archlinuxcn-keyring --noconfirm
 pacman -S $pkglist --noconfirm
 systemctl enable sshd
 systemctl enable dhcpcd
+sed -i '/GRUB_TIMEOUT/s/[0-9]/0/g' /etc/default/grub
 grub-install --target=i386-pc --boot-directory=/boot --bootloader-id=grub /dev/sda
 grub-mkconfig -o /boot/grub/grub.cfg
 useradd -m -G wheel -s /usr/bin/zsh $user
