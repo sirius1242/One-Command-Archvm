@@ -7,7 +7,7 @@ mname='Archlinux-vm'
 tz='/Asia/Shanghai'
 vbox='yes'
 # packages which will install automatically in this script
-pkglist="sudo git gcc vim zsh grub pkgfile oh-my-zsh-git zsh-syntax-highlighting openssh"
+pkglist="sudo git gcc vim zsh grub pkgfile oh-my-zsh-git zsh-syntax-highlighting openssh mlocate pikaur"
 
 # script begin
 timedatectl set-ntp true
@@ -44,11 +44,12 @@ useradd -m -G wheel -s /usr/bin/zsh $user
 [[ $vbox == 'yes' ]] && pacman -S virtualbox-guest-modules-arch virtualbox-guest-utils-nox --noconfirm && modprobe vboxsf && usermod -a -G vboxsf $user && systemctl enable vboxservice.service
 echo "$passwd
 $passwd" | passwd $user
-echo '$user ALL=(ALL) ALL' | EDITOR='tee -a' visudo
 echo '$user ALL=(ALL) NOPASSWD: ALL' | EDITOR='tee -a' visudo
 chsh -s /usr/bin/zsh
 EOF
 cp zshrc /mnt/home/$user/.zshrc
 cp vimrc /mnt/home/$user/.vimrc
+chown 1000:1000 /mnt/home/$user/.zshrc
+chown 1000:1000 /mnt/home/$user/.vimrc
 cp zshrc /mnt/root/.zshrc
 cp vimrc /mnt/root/.vimrc

@@ -11,7 +11,7 @@ In the begining, I think I can clone it from github and run it. However, there i
 
 To download it, you can use `wget -P ~/ https://github.com/sirius1242/One-Command-Archvm/archive/master.zip` and uncompress or directly download these files to the same directory. If `build.sh` have no execute permission, you can use `chmod +x build.sh`.
 
-In the directory where you clone or put the files into, use `./build.sh` to execute it, and wait for install finished.
+In the directory where you clone or put the files into, use `./build.sh` (if you are not using virtualbox, you can change variable `vbox` to 'no' to cancel the install of guest edition) to execute it, and wait for install finished.
 
 There are some configurations in the script, such as username, password, mirrorlist and so on. and the system installed will use [oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh) and [vim-for-server](https://github.com/wklken/vim-for-server) (I did some modifications), you can change these configrations after downloaded it, or you can also fork the repo and modify, put the repo in your server (or other places) to clone or download in future also works.
 
