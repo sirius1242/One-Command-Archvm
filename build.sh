@@ -20,7 +20,7 @@ mount /dev/sda1 /mnt
 mkdir /mnt/boot
 mv /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.bak
 grep 'ustc' /etc/pacman.d/mirrorlist.bak > /etc/pacman.d/mirrorlist
-pacstrap /mnt base
+pacstrap /mnt base linux linux-firmware
 genfstab -U /mnt >> /mnt/etc/fstab
 cat << EOF | arch-chroot /mnt
 ln -sf /usr/share/zoneinfo/$tz /etc/localtime
